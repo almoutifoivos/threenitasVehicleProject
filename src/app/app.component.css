@@ -1,0 +1,33 @@
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
+app-sidebar {
+  flex-shrink: 0;
+  width: 300px;
+  border-right: 1px solid #121212;
+}
+
+.search-container {
+  flex-grow: 1; 
+  padding: 40px;
+  display: flex;
+  justify-content: center; 
+}

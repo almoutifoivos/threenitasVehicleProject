@@ -1,0 +1,12 @@
+<div class="layout">
+    <app-top-bar [selectedPlateNumber]="selectedPlateNumber"></app-top-bar>
+    
+    <div class="main-content">
+      <app-sidebar (vehicleSelected)="onVehicleSelected($event)"></app-sidebar>
+      <div class="search-container">
+        <app-search-fields [selectedVehicle]="selectedPlateNumber"></app-search-fields>
+      </div>
+    </div>
+  </div>
+  
+  

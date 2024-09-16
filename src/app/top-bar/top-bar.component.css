@@ -1,0 +1,22 @@
+.top-bar {
+  position: relative; 
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #121212;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.icon {
+  position: absolute; 
+  left: 10px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+  font-size: 60px;
+  color: green;
+}
+
+h2 {
+  margin: 0;
+}

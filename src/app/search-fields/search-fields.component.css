@@ -1,0 +1,45 @@
+.approved {
+    background-color: green;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px;
+    justify-content: center; 
+    height: 25px; 
+  }
+  
+  .canceled {
+    background-color: red;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 14px;
+    justify-content: center; 
+    height: 25px; 
+  }
+
+td, th {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    text-align: center; 
+    vertical-align: middle; 
+    padding: 10px; 
+    position: relative;
+  }
+  
+  
+  td.wrapper {
+    display: flex;
+    margin-top: 1em;
+  }
+  
+  table {
+    border-collapse: collapse; 
+  }
+  
+  tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  

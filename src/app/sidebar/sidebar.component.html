@@ -1,0 +1,19 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <h4 class="availableVehicles" style="padding-bottom: 20px ;">Διαθέσημα Οχήματα</h4>
+
+      <mat-form-field class="plateSearch" appearance="outline">
+        <mat-label>Αναζήτηση πινακίδας</mat-label>
+        <input matInput [formControl]="searchControl" placeholder="Εισάγετε Σειρά-Αριθμό">
+      </mat-form-field>
+
+      <a mat-list-item class="plate" *ngFor="let vehicle of filteredVehicles" (click)="onVehicleSelect(vehicle.plate)">
+        {{ vehicle.plate }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>Select a vehicle from the sidebar</p>
+  </mat-sidenav-content>
+</mat-sidenav-container>

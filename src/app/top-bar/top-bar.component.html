@@ -1,0 +1,9 @@
+<div class="top-bar">
+    <fa-icon [icon]="faTruck " class="icon"></fa-icon>
+    <h2 *ngIf="selectedPlateNumber; else noSelection">
+      Σειρά-Αριθμός: {{ selectedPlateNumber }}
+    </h2>
+    <ng-template #noSelection>
+      <h2>Διαλέξτε ένα διαθέσιμο όχημα</h2>
+    </ng-template>
+</div>

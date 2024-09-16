@@ -1,0 +1,29 @@
+.sidenav-container {
+    height: 100%;
+  }
+  mat-sidenav {
+    width: 300px;
+  }
+  mat-sidenav-content {
+    padding: 20px;
+  }
+
+.plate:hover{
+  background-color: #D1FFBD;
+}
+
+.plateSearch {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px; 
+}
+
+.availableVehicles{
+  text-align: center; 
+  width: 100%;
+  margin: 0;
+  padding-top: 10px;
+
+}

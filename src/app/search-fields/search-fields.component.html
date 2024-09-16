@@ -1,0 +1,84 @@
+  
+<form [formGroup]="filterForm" (ngSubmit)="onSearch()">
+  <mat-form-field style="margin-left: 10px;"  appearance="outline">
+    <mat-label >Σειρά-Αριθμός</mat-label>
+    <input matInput formControlName="serialNumber" placeholder="Εισάγετε Σειρά-Αριθμό">
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 10px;" appearance="outline">
+    <mat-label>Οδηγός</mat-label>
+    <mat-select formControlName="fullName" placeholder="Διαθέσιμοι οδηγοί">
+      <mat-option *ngFor="let name of uniqueNames" [value]="name">
+        {{ name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 10px;" appearance="outline">
+    <mat-label>Ημερομηνία</mat-label>
+    <input matInput [matDatepicker]="issuePicker" formControlName="issueDate" placeholder="Ημερομηνία (MM/dd/yyyy)">
+    <mat-datepicker-toggle matSuffix [for]="issuePicker"></mat-datepicker-toggle>
+    <mat-datepicker #issuePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field style="margin-left: 10px;" appearance="outline">
+    <mat-label>Κατάσταση</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="">Όλα</mat-option>
+      <mat-option value="approved">Εγκεκριμένο</mat-option>
+      <mat-option value="canceled">Ακυρωμένο</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button style="margin-left: 10px; background-color: green; border-radius: 1; width: 100px;" mat-flat-button color="primary">Αναζήτηση</button>
+</form>
+
+
+<table style="border-bottom: 1px solid #ccc;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="serialNumber">
+    <th mat-header-cell *matHeaderCellDef> Σειρά-Αριθμός </th>
+    <td mat-cell *matCellDef="let record"> {{ record.serialNumber }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef> Οδηγός </th>
+    <td mat-cell *matCellDef="let record"> {{ record.fullName }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="issueDate">
+    <th mat-header-cell *matHeaderCellDef> Κατάσταση </th>
+    <td mat-cell *matCellDef="let record"> {{ getFormattedDate(record.issueDate) }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isApproved">
+    <th mat-header-cell *matHeaderCellDef> Κατάσταση </th>
+    <td class="wrapper" mat-cell *matCellDef="let record" [ngClass]="record.isApproved ? 'approved' : 'canceled'">
+      {{ record.isApproved ? 'Εγκεκριμένο' : 'Ακυρωμένο' }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="tierAmount">
+    <th mat-header-cell *matHeaderCellDef> Κλίμακα επιβράβευσης </th>
+    <td mat-cell  *matCellDef="let record"> {{ record.tierAmount }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="registrationAmount">
+    <th mat-header-cell *matHeaderCellDef> Ποσό καταχώρησης </th>
+    <td mat-cell *matCellDef="let record"> {{ record.registrationAmount | currency: 'EUR' }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="consumptionAmount">
+    <th mat-header-cell *matHeaderCellDef> Ποσότητα κατανάλωσης </th>
+    <td mat-cell *matCellDef="let record"> {{ record.consumptionAmount  }} Kg </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rewardAmount">
+    <th mat-header-cell *matHeaderCellDef> Ποσό Επιβράβευσης </th>
+    <td mat-cell *matCellDef="let record"> {{ record.rewardAmount | currency: 'EUR' }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator  class="mat-elevation-z8"  [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
